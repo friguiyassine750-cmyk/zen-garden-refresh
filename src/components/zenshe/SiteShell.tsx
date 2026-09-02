@@ -33,7 +33,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </Link>
           <nav className="desktop-nav" aria-label="Primary navigation">
             {navigation.map((item) => (
-              <Link key={item.label} to={item.to} hash={"hash" in item ? item.hash : undefined} className="nav-link">
+              <Link key={item.label} to={item.to} {..."hash" in item ? { hash: item.hash } : {}} className="nav-link">
                 {item.label}
               </Link>
             ))}
@@ -75,7 +75,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         {menuOpen && (
           <nav className="mobile-nav" aria-label="Mobile navigation">
             {navigation.map((item) => (
-              <Link key={item.label} to={item.to} hash={"hash" in item ? item.hash : undefined} className="mobile-nav__link" onClick={() => setMenuOpen(false)}>
+              <Link key={item.label} to={item.to} {..."hash" in item ? { hash: item.hash } : {}} className="mobile-nav__link" onClick={() => setMenuOpen(false)}>
                 {item.label}
               </Link>
             ))}
