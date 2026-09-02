@@ -10,10 +10,14 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BookingRouteImport } from './routes/booking'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as JournalRouteImport } from './routes/journal'
 import { Route as MembershipsRouteImport } from './routes/memberships'
+import { Route as NewRouteImport } from './routes/new'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as StoreRouteImport } from './routes/store'
@@ -21,6 +25,11 @@ import { Route as StoreRouteImport } from './routes/store'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminRoute = AdminRouteImport.update({
@@ -38,9 +47,24 @@ const BookingRoute = BookingRouteImport.update({
   path: '/booking',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JournalRoute = JournalRouteImport.update({
+  id: '/journal',
+  path: '/journal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MembershipsRoute = MembershipsRouteImport.update({
   id: '/memberships',
   path: '/memberships',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewRoute = NewRouteImport.update({
+  id: '/new',
+  path: '/new',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProfileRoute = ProfileRouteImport.update({
@@ -61,20 +85,28 @@ const StoreRoute = StoreRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
   '/booking': typeof BookingRoute
+  '/contact': typeof ContactRoute
+  '/journal': typeof JournalRoute
   '/memberships': typeof MembershipsRoute
+  '/new': typeof NewRoute
   '/profile': typeof ProfileRoute
   '/services': typeof ServicesRoute
   '/store': typeof StoreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
   '/booking': typeof BookingRoute
+  '/contact': typeof ContactRoute
+  '/journal': typeof JournalRoute
   '/memberships': typeof MembershipsRoute
+  '/new': typeof NewRoute
   '/profile': typeof ProfileRoute
   '/services': typeof ServicesRoute
   '/store': typeof StoreRoute
@@ -82,10 +114,14 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
   '/booking': typeof BookingRoute
+  '/contact': typeof ContactRoute
+  '/journal': typeof JournalRoute
   '/memberships': typeof MembershipsRoute
+  '/new': typeof NewRoute
   '/profile': typeof ProfileRoute
   '/services': typeof ServicesRoute
   '/store': typeof StoreRoute
@@ -94,30 +130,42 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/admin'
     | '/auth'
     | '/booking'
+    | '/contact'
+    | '/journal'
     | '/memberships'
+    | '/new'
     | '/profile'
     | '/services'
     | '/store'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/admin'
     | '/auth'
     | '/booking'
+    | '/contact'
+    | '/journal'
     | '/memberships'
+    | '/new'
     | '/profile'
     | '/services'
     | '/store'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/admin'
     | '/auth'
     | '/booking'
+    | '/contact'
+    | '/journal'
     | '/memberships'
+    | '/new'
     | '/profile'
     | '/services'
     | '/store'
@@ -125,10 +173,14 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
   AuthRoute: typeof AuthRoute
   BookingRoute: typeof BookingRoute
+  ContactRoute: typeof ContactRoute
+  JournalRoute: typeof JournalRoute
   MembershipsRoute: typeof MembershipsRoute
+  NewRoute: typeof NewRoute
   ProfileRoute: typeof ProfileRoute
   ServicesRoute: typeof ServicesRoute
   StoreRoute: typeof StoreRoute
@@ -141,6 +193,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin': {
@@ -164,11 +223,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BookingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/journal': {
+      id: '/journal'
+      path: '/journal'
+      fullPath: '/journal'
+      preLoaderRoute: typeof JournalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/memberships': {
       id: '/memberships'
       path: '/memberships'
       fullPath: '/memberships'
       preLoaderRoute: typeof MembershipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/new': {
+      id: '/new'
+      path: '/new'
+      fullPath: '/new'
+      preLoaderRoute: typeof NewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/profile': {
@@ -197,10 +277,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
   AuthRoute: AuthRoute,
   BookingRoute: BookingRoute,
+  ContactRoute: ContactRoute,
+  JournalRoute: JournalRoute,
   MembershipsRoute: MembershipsRoute,
+  NewRoute: NewRoute,
   ProfileRoute: ProfileRoute,
   ServicesRoute: ServicesRoute,
   StoreRoute: StoreRoute,
