@@ -4,8 +4,8 @@ import { useEffect, useState, type ReactNode } from "react";
 
 const navigation = [
   { label: "Services", to: "/services" },
-  { label: "New", to: "/#new" },
-  { label: "Journal", to: "/#gallery" },
+  { label: "New", to: "/", hash: "new" },
+  { label: "Journal", to: "/", hash: "gallery" },
   { label: "Store", to: "/store" },
   { label: "Membership", to: "/memberships" },
 ] as const;
@@ -33,7 +33,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </Link>
           <nav className="desktop-nav" aria-label="Primary navigation">
             {navigation.map((item) => (
-              <Link key={item.label} to={item.to} className="nav-link">
+              <Link key={item.label} to={item.to} {..."hash" in item ? { hash: item.hash } : {}} className="nav-link">
                 {item.label}
               </Link>
             ))}
@@ -75,7 +75,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         {menuOpen && (
           <nav className="mobile-nav" aria-label="Mobile navigation">
             {navigation.map((item) => (
-              <Link key={item.label} to={item.to} className="mobile-nav__link" onClick={() => setMenuOpen(false)}>
+              <Link key={item.label} to={item.to} {..."hash" in item ? { hash: item.hash } : {}} className="mobile-nav__link" onClick={() => setMenuOpen(false)}>
                 {item.label}
               </Link>
             ))}
