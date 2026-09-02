@@ -4,8 +4,8 @@ import { useEffect, useState, type ReactNode } from "react";
 
 const navigation = [
   { label: "Services", to: "/services" },
-  { label: "New", to: "/#new" },
-  { label: "Journal", to: "/#gallery" },
+  { label: "New", to: "/", hash: "new" },
+  { label: "Journal", to: "/", hash: "gallery" },
   { label: "Store", to: "/store" },
   { label: "Membership", to: "/memberships" },
 ] as const;
